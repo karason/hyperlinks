@@ -1,0 +1,43 @@
+<center>
+<h1>listing allocated links</h1>
+
+<table>
+  <tr>
+    <th>link</th>
+    <th>category</th>
+    <th>user</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @allocated_links.each do |allocated_link| %>
+  <tr>
+    <td><%= link_to allocated_link.link.alias, allocated_link.link.link %></td>
+    <td><%= allocated_link.category.category %></td>
+    <td><%= allocated_link.user.user %></td>
+    <td><%= link_to 'view', allocated_link %></td>
+    <td><%= link_to 'edit', edit_allocated_link_path(allocated_link) %></td>
+    <td><%= link_to 'delete', allocated_link, method: :delete, data: { confirm: 'delete?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'create allocated link', new_allocated_link_path %>
+
+<p />
+
+<div>
+<table border="1">
+  <tr>
+    <td><%= link_to 'users', users_path %></td>
+    <td><%= link_to 'categories', categories_path %></td>
+    <td><%= link_to 'links', links_path %></td>
+    <td><%= link_to 'allocated links', allocated_links_path %></td>
+    <td><%= link_to 'unallocated links', unallocated_links_path %></td>
+  </tr>
+</table>
+</div>
+</center>

@@ -1,0 +1,49 @@
+<% #user view %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <table>
+    <tr>
+      <td>
+        <hr>
+        <font size="6" color="#FFFFFF">hyperlinks</font>
+        <br />
+        <center>de <font size="4" color="#0000FF"><%= @user.user %></font></center>
+        <hr>
+      </td>
+    </tr>
+  </table>
+  <table>
+  <% @user.categories.each do |categories| %>
+    <tr>
+      <td><b><%= categories.category %></b></td>
+      <td></td>
+    </tr>
+    <% AllocatedLink.where(category_id: categories.id).each do |allocated_links| %>
+      <tr>
+        <td><%= allocated_links.link.link %></td>
+        <td><%= allocated_links.link.alias %></td>
+        <td><font color="#00FF00">share</font></td>
+        <td><font color="#00FF00">edit</font></td>
+        <td><font color="#00FF00">delete</font></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>
+  <table>
+    <tr>
+      <td><b>unallocated links</b></td>
+      <td><b>from user</b></td>
+    </tr>
+    <% UnallocatedLink.where(to_user_id: @user.id).each do |unallocated_links| %>
+    <tr>
+      <td><%= unallocated_links.link.link %></td>
+      <td><%= unallocated_links.from_user.user %></td>
+      <td><font color="#00FF00">allocate</font></td>
+      <td><font color="#00FF00">delete</font></td>
+    </tr>
+  <% end %>
+  </table>
+</p>
+
+<b><%= link_to '<', users_path %></b>

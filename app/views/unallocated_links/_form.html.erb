@@ -1,0 +1,29 @@
+<%= form_for(@unallocated_link) do |f| %>
+  <% if @unallocated_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@unallocated_link.errors.count, "error") %> prohibited this unallocated_link from being saved:</h2>
+
+      <ul>
+      <% @unallocated_link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :link %><br />
+    <%= collection_select(:unallocated_link, :link_id, Link.all, :id, :link) %>
+  </div>
+  <div class="field">
+    <%= f.label :to_user %><br />
+    <%= collection_select(:unallocated_link, :to_user_id, User.all, :id, :user) %>
+  </div>
+  <div class="field">
+    <%= f.label :from_user %><br />
+    <%= collection_select(:unallocated_link, :from_user_id, User.all, :id, :user) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

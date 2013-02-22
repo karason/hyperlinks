@@ -1,0 +1,67 @@
+<% #user view %>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <td>
+
+<p>
+  <center>
+  <table>
+    <tr>
+      <td>
+        <hr>
+        <font size="6" color="#FFFFFF">hyperlinks</font>
+        <br />
+        <center>de <font size="4" color="#0000FF"><%= @user.user %></font></center>
+        <hr>
+      </td>
+    </tr>
+  </table>
+  </center> 
+  <table>
+  <% @user.categories.each do |categories| %>
+    <tr>
+      <td><b><%= categories.category %></b></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% AllocatedLink.where(category_id: categories.id).each do |allocated_links| %>
+      <tr>
+        <td><%= link_to allocated_links.link.link, allocated_links.link.link %></td>
+        <td><%= allocated_links.link.alias %></td>
+        <td><div class="magic">share</div></td>
+        <td><div class="magic">edit</div></td>
+        <td><div class="magic">delete</div></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>
+  <p />
+  <table>
+    <tr>
+      <td><b>unallocated links</b></td>
+      <td></td>
+      <td><b>from user</b></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% UnallocatedLink.where(to_user_id: @user.id).each do |unallocated_links| %>
+    <tr>
+      <td><%= link_to unallocated_links.link.link, unallocated_links.link.link %></td>
+      <td></td>
+      <td><%= unallocated_links.from_user.user %></td>
+      <td><div class="magic">allocate</div></td>
+      <td><div class="magic">delete</div></td>
+    </tr>
+  <% end %>
+  </table>
+</p>
+
+<b><%= link_to '<', users_path %></b>
+
+    </tr>
+  </td>
+</table>

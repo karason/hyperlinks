@@ -1,0 +1,35 @@
+<% #link view %>
+<p id="notice"><%= notice %></p>
+
+<br />
+<center>
+<p>
+
+<font size=6 color=
+  <% variable = rand(8) %>
+  <% case variable %>
+    <% when 0 %>
+      "#000000"
+    <% when 1 %>
+      "#0000FF"
+    <% when 2 %>
+      "#00FF00"
+    <% when 3 %>
+      "#00FFFF"
+    <% when 4 %>
+      "#FF0000"
+    <% when 5 %>
+      "#FF00FF"
+    <% when 6 %>
+      "#FFFF00"
+    <% when 7 %>
+      "#FFFFFF"
+  <% end %>>
+<%= @link.alias %></font>
+<br />
+<%= @link.link %>
+
+</p>
+</center>
+
+<b><% link_to '<', links_path %></b>

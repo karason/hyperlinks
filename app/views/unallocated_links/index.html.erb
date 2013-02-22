@@ -1,0 +1,39 @@
+<center>
+<h1>listing unallocated links</h1>
+
+<table>
+  <tr>
+    <th>link</th>
+    <th>to user</th>
+    <th>from user</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @unallocated_links.each do |unallocated_link| %>
+  <tr>
+    <td><%= link_to unallocated_link.link.alias, unallocated_link.link.link %></td>
+    <td><%= unallocated_link.to_user.user %></td>
+    <td><%= unallocated_link.from_user.user %></td>
+    <td><%= link_to 'view', unallocated_link %></td>
+    <td><%= link_to 'edit', edit_unallocated_link_path(unallocated_link) %></td>
+    <td><%= link_to 'delete', unallocated_link, method: :delete, data: { confirm: 'delete?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'create unallocated link', new_unallocated_link_path %>
+
+<p />
+
+<div>
+<%= link_to 'users', users_path %>
+<%= link_to 'categories', categories_path %>
+<%= link_to 'links', links_path %>
+<%= link_to 'allocated links', allocated_links_path %>
+<%= link_to 'unallocated links', unallocated_links_path %>
+</div>
+</center>

@@ -1,0 +1,37 @@
+<center>
+<h1>listing categories</h1>
+
+<table>
+  <tr>
+    <th>category</th>
+    <th>user</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.category %></td>
+    <td><%= category.user.user %></td>
+    <td><%= link_to 'view', category %></td>
+    <td><%= link_to 'edit', edit_category_path(category) %></td>
+    <td><%= link_to 'delete', category, method: :delete, data: { confirm: 'delete?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'create category', new_category_path %>
+
+<p />
+
+<div>
+<%= link_to 'users', users_path %>
+<%= link_to 'categories', categories_path %>
+<%= link_to 'links', links_path %>
+<%= link_to 'allocated links', allocated_links_path %>
+<%= link_to 'unallocated links', unallocated_links_path %>
+</div>
+</center>

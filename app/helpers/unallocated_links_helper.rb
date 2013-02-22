@@ -1,0 +1,2 @@
+module UnallocatedLinksHelper
+end

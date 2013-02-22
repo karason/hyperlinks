@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Link:</b>
+  <%= @allocated_link.link_id %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @allocated_link.category_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @allocated_link.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_allocated_link_path(@allocated_link) %> |
+<%= link_to 'Back', allocated_links_path %>

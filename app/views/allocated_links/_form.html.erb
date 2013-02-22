@@ -1,0 +1,29 @@
+<%= form_for(@allocated_link) do |f| %>
+  <% if @allocated_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@allocated_link.errors.count, "error") %> prohibited this allocated_link from being saved:</h2>
+
+      <ul>
+      <% @allocated_link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :link %><br />
+    <%= collection_select(:allocated_link, :link_id, Link.all, :id, :link) %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= collection_select(:allocated_link, :category_id, Category.all, :id, :category) %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= collection_select(:allocated_link, :user_id, User.all, :id, :user) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
